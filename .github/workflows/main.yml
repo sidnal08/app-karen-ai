@@ -1,0 +1,28 @@
+name: pythonapp actions
+on: workflow_dispatch
+env:
+  AWS_REGION: us-east-2
+  ECR_REPOSITORY: karen-ai-reg
+  EKS_CLUSTER: karen-ai-eks
+
+jobs:
+  Build_AND_Publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+        
+      - name: build image
+        uses: appleboy/docker-ecr-action@master
+        with:
+          access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          registry: ${{ secrets.REGISTRY }}
+          cache_from: ${{ secrets.cache }}
+          repo: ${{ env.ECR_REPOSITORY }}
+          region: ${{ env.AWS_REGION }}
+          auto_tag: latest,${{ github.run_number }}
+          daemon_off: false
+          dockerfile: ./Dockerfile
+          context: ./ 
+       
