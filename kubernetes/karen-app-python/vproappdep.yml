@@ -1,29 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vproapp
-  labels: 
-    app: vproapp
+  name: flask-app
+  labels:
+    app: flask-app
 spec:
-  replicas: 1
+  replicas: 2  # Adjust replicas as needed
   selector:
     matchLabels:
-      app: vproapp
+      app: flask-app
   template:
     metadata:
       labels:
-        app: vproapp
+        app: flask-app
     spec:
       containers:
-      - name: vproapp
-        image: vprofile/vprofileapp
-        ports:
-        - name: vproapp-port
-          containerPort: 8080
-      initContainers:
-      - name: init-mydb
-        image: busybox
-        command: ['sh', '-c', 'until nslookup vprodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
-      - name: init-memcache
-        image: busybox
-        command: ['sh', '-c', 'until nslookup vprocache01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
+        - name: flask-app
+          image: sidnal08/flask-app:latest  # Replace with your Docker Hub username
+          ports:
+            - containerPort: 5000
+          env:
+            - name: FLASK_ENV
+              value: "production"
+

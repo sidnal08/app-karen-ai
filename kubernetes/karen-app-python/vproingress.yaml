@@ -1,19 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: vpro-ingress
+  name: flask-app-ingress
   annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
+    kubernetes.io/ingress.class: "nginx"  # Requires an Ingress Controller
 spec:
-  ingressClassName: nginx
   rules:
-  - host: vprofile.thehkh.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: my-app
-            port:
-              number: 8080
+    - host: flask-app.devopswithsiddharth.live  # Replace with your domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: flask-app-service
+                port:
+                  number: 80
+
