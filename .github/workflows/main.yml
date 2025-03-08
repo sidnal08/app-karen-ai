@@ -46,6 +46,10 @@ jobs:
       - name: Print config file
         run: cat ~/.kube/config
 
+      - name: Delete existing regcred secret (if exists)
+        continue-on-error: true
+        run: kubectl delete secret regcred || true
+        
       - name: Login to ECR
         run: kubectl create secret docker-registry regcred --docker-server=${{ secrets.REGISTRY }} --docker-username=AWS  --docker-password=$(aws ecr get-login-password) 
 
