@@ -7,7 +7,7 @@ spec:
     app: flask-app
   ports:
     - protocol: TCP
-      port: 80  # Exposing on port 80
-      targetPort: 5000  # Flask app runs on 5000
-  type: LoadBalancer  # Exposes the service externally with an AWS ELB
+      port: 80 
+      targetPort: 5000  
+  type: LoadBalancer  
 

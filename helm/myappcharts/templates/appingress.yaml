@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: flask-app-ingress
   annotations:
-    kubernetes.io/ingress.class: "nginx"  # Requires an Ingress Controller
+    kubernetes.io/ingress.class: "nginx" 
 spec:
   rules:
-    - host: flask-app.devopswithsiddharth.live  # Replace with your domain
+    - host: flask-app.devopswithsiddharth.live 
       http:
         paths:
           - path: /

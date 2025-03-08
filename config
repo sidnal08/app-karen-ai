@@ -1,0 +1,29 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJQkpZdlZUOTdNem93RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TlRBek1EZ3dOVEkyTVRWYUZ3MHpOVEF6TURZd05UTXhNVFZhTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUUMxM01NbmVYZ2NTNTI4RHpvVVlRU3UyaUw4SWVpc1crcUV5K1h5Q3NmZzJxWE9KWWczWGsyMmlBVkQKWlN1anRCY0hWbHhaUE1WcEF1ZEpNd0dZZ0k0Z0IwTXdWL29aamlHL1pManZGK1VUbStGUHIxZDBvTjhhdnNTbApSbzlUQUlWckhwdStnR0hlc2xZUHdmUDR4TVU3R0NzdHpqZGFxTnQ5a1k2ZTFlY3lWL0s1bnUybTdOSXZUMUl3CkY4ZlVsVzlOQ3ZVK0ZoY1l0SGRJL2p6Nm9hdE9uSGR2SGo0N2RRMDNEcDVlUk55MXg3dmViVDZEU3htVVlTRGgKK0dNcmJuWW9JeFVyVWJ2VmVGcTA0dkkyaHAzWkdwRzRsMHRTQm1KTGpsTzc4enNNNlErclpSZ1h2SWxranA3NwprWGhoQ0RoYUUvSUI5Vkdna0ZPb01rN2hMRDEvQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJRZEljUk1XT3FEODd6akd3MTJVWExLOXIyOXdUQVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQzBIQTNDc3k5VwplbFZJOUhHMURBbXM0L1lEamQwcjk5WjcyakdPc01BSXZmRFUrTjdwd0lDOThZam9KNDg0cTVYY09wRkVlRnloCmd5c1RVVitKOC9JTVd3dXE0bkxPSHMwQ09GbGxNd1JJU2NVMThHU243b0d1a2dVei9ZaEMvWFVQbU04Y2FKVDMKTENLRjRrZDdTcTVmT2s3cUM2ODEzMGlmdDV5L3F5clNGa25WNi9jTU9yVGgvUDV5ZFhxSFB4dFd5YXRLanVBVgp4SE44bW9HTWtJSWg1TTJNWmNvRnVyMkJnYS9vWE0yenU0ZlBkbnRmZHIxK1JVeXlHVno5bEJ5bVpPeWFBV0svClNRbTJtYndjWjFiam1JWHkwdlB6QUFHQWhHY0UwNmRJQWhLcWlGN3VZTmNCNVB6UWNNY0VoTUM4Vmh3dm1mNWMKdFFyd0hWQXBQSFhPCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    server: https://D072F8D068803AD72698674FFAEF1089.sk1.us-east-2.eks.amazonaws.com
+  name: arn:aws:eks:us-east-2:869935099044:cluster/karen-ai-eks
+contexts:
+- context:
+    cluster: arn:aws:eks:us-east-2:869935099044:cluster/karen-ai-eks
+    user: arn:aws:eks:us-east-2:869935099044:cluster/karen-ai-eks
+  name: arn:aws:eks:us-east-2:869935099044:cluster/karen-ai-eks
+current-context: arn:aws:eks:us-east-2:869935099044:cluster/karen-ai-eks
+kind: Config
+preferences: {}
+users:
+- name: arn:aws:eks:us-east-2:869935099044:cluster/karen-ai-eks
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - --region
+      - us-east-2
+      - eks
+      - get-token
+      - --cluster-name
+      - karen-ai-eks
+      - --output
+      - json
+      command: aws
